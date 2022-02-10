@@ -117,7 +117,8 @@ You should now be able to pair your airpods and use them as headphones.
     
     [Install]
     
-    WantedBy=multi-user.target```
+    WantedBy=multi-user.target
+   ```
    
 8. Run both daemons with the following commands
 
@@ -134,10 +135,9 @@ You should now be able to pair your airpods and use them as headphones.
     ```
 
     Lastly, restart pulseaudio with `pulseaudio -k`
+   
 
-    
 For the modem to be online, you must have `ofono-phonesim -p 12345 /usr/share/phonesim/default.xml` running in a shell.
-
 
 # References
 https://reckoning.dev/blog/airpods-pro-ubuntu/
