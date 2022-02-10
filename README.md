@@ -16,14 +16,14 @@ You should now be able to pair your airpods and use them as headphones.
     `sudo apt install ofono`
 2. Configure pulseaudio to use ofono
 
-    Go to `/etf/pulse/default.pa` 
+    Go to `/etc/pulse/default.pa` 
     
         Find the line `load-module module-bluetooth-discover` 
     
         Change it to `load-module module-bluetooth-discover headset=ofono`
     Add the user `pulse` to the group `bluetooth` to grant the permission 
-    
-        `sudo usermod -aG bluetooth pulse`
+
+   ```sudo usermod -aG bluetooth pulse```
     
     Add the folowing line to `/etc/dbus-1/system.d/ofono.conf` before `</busconfig>`
     
@@ -33,7 +33,7 @@ You should now be able to pair your airpods and use them as headphones.
     </policy>
     ```
 
-3. Provide a "modem" to ofono by installing ofono-phonesim
+4. Provide a "modem" to ofono by installing ofono-phonesim
     
     ```
     sudo add-apt-repository ppa:smoser/bluetooth
@@ -56,7 +56,7 @@ You should now be able to pair your airpods and use them as headphones.
    sudo systemctl restart ofono.service
     ```
    
-4. To run `ofono-phonesim -p 12345 /usr/share/phonesim/default.xml` on startup, create the file `/etc/systemd/system/ofono-phonesim.service` and add the following content.
+5. To run `ofono-phonesim -p 12345 /usr/share/phonesim/default.xml` on startup, create the file `/etc/systemd/system/ofono-phonesim.service` and add the following content.
 
     ```
     [Unit]
@@ -73,7 +73,7 @@ You should now be able to pair your airpods and use them as headphones.
     WantedBy=multi-user.target
    ```
    
-5. Now, you need to put the modem online. Do this by cloning the following github repos
+6. Now, you need to put the modem online. Do this by cloning the following github repos
 
     ```
     cd /tmp
