@@ -137,3 +137,15 @@ You should now be able to pair your airpods and use them as headphones.
 
     
 For the modem to be online, you must have `ofono-phonesim -p 12345 /usr/share/phonesim/default.xml` running in a shell.
+
+
+# References
+https://reckoning.dev/blog/airpods-pro-ubuntu/
+
+https://askubuntu.com/questions/1204810/make-no-rule-to-make-target-ell-util-c-needed-by-ell-util-lo
+
+https://askubuntu.com/questions/506116/bluez-installation-configuration-error-for-dbus-1-6
+
+https://github.com/bluez/bluez/issues/125
+
+https://askubuntu.com/questions/1283580/ofono-enable-modem-fails-with-dbus-exceptions-dbusexception-org-ofono-error-fai
