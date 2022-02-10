@@ -1,0 +1,14 @@
+[Unit]
+Description=Enable and online phonesim model
+Requires=ofono-phonesim.service
+
+[Service]
+
+ExecStart=/opt/ofono/test/enable-modem /phonesim
+ExecStart=/opt/ofono/test/online-modem /phonesim
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+
+WantedBy=multi-user.target

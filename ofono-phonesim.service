@@ -1,0 +1,12 @@
+[Unit]
+Description=Run ofono-phonesim in the background
+
+[Service]
+
+ExecStart=ofono-phonesim -p 12345 /usr/share/phonesim/default.xml
+Type=simple
+RemainAfterExit=yes
+
+[Install]
+
+WantedBy=multi-user.target
