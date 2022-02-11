@@ -1,10 +1,10 @@
 # Enable airpods as headphone
 Edit the `ControllerMode` to `bredr` from the default value of `dual`
-```bash
+```
 sudo emacs /etc/bluetooth/main.conf
 ```
 Then restart the Bluetooth service using
-```bash
+```
 sudo /etc/init.d/bluetooth restart
 ```
 
@@ -27,7 +27,7 @@ You should now be able to pair your airpods and use them as headphones.
     
     Add the folowing line to `/etc/dbus-1/system.d/ofono.conf` before `</busconfig>`
     
-    ```angular2html
+    ```
     <policy user="pulse">
         <allow send_destination="org.ofono"/>
     </policy>
@@ -35,7 +35,7 @@ You should now be able to pair your airpods and use them as headphones.
 
 3. Provide a "modem" to ofono by installing ofono-phonesim
     
-    ```bash
+    ```
     sudo add-apt-repository ppa:smoser/bluetooth
     sudo apt-get update
     sudo apt-get install ofono-phonesim
@@ -52,7 +52,7 @@ You should now be able to pair your airpods and use them as headphones.
    
     Now, restart the ofono service with 
 
-    ```bash
+    ```
    sudo systemctl restart ofono.service
     ```
    
@@ -75,15 +75,24 @@ You should now be able to pair your airpods and use them as headphones.
    
 5. Now, you need to put the modem online. Do this by cloning the following github repos
 
-    ```bash
+    ```
     cd /tmp
     git clone git://git.kernel.org/pub/scm/network/ofono/ofono.git
     git clone https://github.com/bryanperris/ell.git
    ```
    
-    Once you have these repos, `cd /tmp/ofono` and run the following commands
+    Once you have these repos, `cd /tmp/ell` and run the following commands.
 
-    ```bash
+   ```
+   autoreconf -fi
+   ./configure
+   sudo make
+   sudo make install
+   ```
+
+   Now, `cd /tmp/ofono` and run the following commands
+   
+    ```
    autoreconf -fi
    ./configure --enable-external-ell
    sudo make
@@ -92,13 +101,13 @@ You should now be able to pair your airpods and use them as headphones.
    
     If there are any D-Bus errors, install the following
     
-    ```bash
+    ```
    sudo apt install libdbus-1-dev libudev-dev libical-dev libreadline-dev
    ```
    
    Now move the `ofono/` and `ell/` directories to the `/opt/` directory.
 
-   ```bash
+   ```
    mv ofono/ ell/ /opt/
    ```
     Now you can put the phonesim online by creating another systemd unit file that depends on the ofono-phonesim. Put the following content in `/etc/systemd/system/phonesim-enable-modem.service`
@@ -120,9 +129,9 @@ You should now be able to pair your airpods and use them as headphones.
     WantedBy=multi-user.target
    ```
    
-8. Run both daemons with the following commands
+7. Run both daemons with the following commands
 
-    ```bash
+    ```
     sudo systemctl daemon-reload
     sudo systemctl enable ofono-phonesim.service
     sudo systemctl enable phonesim-enable-modem.service
@@ -130,7 +139,7 @@ You should now be able to pair your airpods and use them as headphones.
    ```
    
     You can check the status of the modem with
-    ```bash
+    ```
     sudo service phonesim-enable-modem status
     ```
 
