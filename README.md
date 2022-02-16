@@ -1,3 +1,5 @@
+# This tutorial worked for one evening. The following day, Ubuntu upgraded and this system no longer worked.
+
 # Enable airpods as headphone
 Edit the `ControllerMode` to `bredr` from the default value of `dual`
 ```
